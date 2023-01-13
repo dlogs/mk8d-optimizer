@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from '../atoms/Slider.js'
+import './WeightsSliders.css'
 
 interface WeightsProps<TKey extends string, TWeights extends Record<TKey, number>> {
   weights: TWeights
@@ -18,17 +19,18 @@ export default function WeightsSliders<TKey extends string, TWeights extends Rec
   }
 
   const weightSlider = (name: TKey) => (
-    <aside key={name}>
+    <div className='weight-container' key={name}>
       <label htmlFor={`${name}Slider`}>
         {name}: {weights[name]}
       </label>
       <Slider
+        className='weight-slider'
         name={`${name}Slider`}
         currentValue={weights[name]}
         valueChanged={(value) => updateWeight(name, value)}
         maxValue={maxValue}
       />
-    </aside>
+    </div>
   )
 
   return <section>{allStats.map(weightSlider)}</section>

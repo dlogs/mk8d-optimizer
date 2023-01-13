@@ -1,0 +1,13 @@
+.weight-container {
+  border: 1px solid var(--color-bg-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow) var(--color-shadow);
+  margin: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  width: var(--width-card);
+}
+
+input.weight-slider {
+  width: 100%;
+  margin-bottom: 0
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from '../atoms/Slider.js'
 import WeightsSliders from '../molecules/WeightsSliders.js'
 import { ScoringOptions } from '../optimizer/weights.js'
+import './Weights.css'
 
 export interface WeightsProps {
   scoringOptions: ScoringOptions
@@ -14,7 +15,7 @@ export default function Weights({ scoringOptions, scoringOptionsChanged }: Weigh
 
   return (
     <div>
-      <h2>Stat Weights</h2>
+      <h3>Stat Weights</h3>
       <WeightsSliders
         weights={scoringOptions.weights}
         weightsUpdated={(weights) => updateScoringOptions('weights', weights)}
@@ -22,13 +23,13 @@ export default function Weights({ scoringOptions, scoringOptionsChanged }: Weigh
       />
       <details>
         <summary>Speed and Handling Terrain Weights</summary>
-        <h3>Speed Weights</h3>
+        <h4>Speed Weights</h4>
         <WeightsSliders
           weights={scoringOptions.speedWeights}
           weightsUpdated={(weights) => updateScoringOptions('speedWeights', weights)}
           maxValue={10}
         />
-        <h3>Handling Weights</h3>
+        <h4>Handling Weights</h4>
         <WeightsSliders
           weights={scoringOptions.handlingWeights}
           weightsUpdated={(weights) => updateScoringOptions('handlingWeights', weights)}
@@ -39,9 +40,9 @@ export default function Weights({ scoringOptions, scoringOptionsChanged }: Weigh
         <label htmlFor='drSlider'>Diminishing Returns: {scoringOptions.diminishingReturns}%</label>
         <Slider
           name='drSlider'
-          currentValue={scoringOptions.diminishingReturns * 5}
-          valueChanged={(value) => updateScoringOptions('diminishingReturns', value / 5)}
-          maxValue={10}
+          currentValue={scoringOptions.diminishingReturns * 10}
+          valueChanged={(value) => updateScoringOptions('diminishingReturns', value / 10)}
+          maxValue={20}
         />
       </div>
     </div>
