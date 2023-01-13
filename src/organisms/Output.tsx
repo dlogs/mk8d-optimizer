@@ -7,7 +7,17 @@ export interface OutputProps {
 
 type FinalColumn = keyof FinalRow
 
-const columns: FinalColumn[] = ['Name', 'Speed', 'Acceleration', 'Weight', 'Handling', 'MiniTurbo', 'TotalScore']
+const columns: FinalColumn[] = [
+  'Name',
+  'Speed',
+  'Acceleration',
+  'Weight',
+  'Handling',
+  'Traction',
+  'MiniTurbo',
+  'Invincibility',
+  'TotalScore',
+]
 
 interface Names {
   character: string
