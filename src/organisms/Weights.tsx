@@ -12,8 +12,6 @@ export default function Weights({ scoringOptions, scoringOptionsChanged }: Weigh
   const updateScoringOptions = <TKey extends keyof ScoringOptions>(key: TKey, value: ScoringOptions[TKey]) =>
     scoringOptionsChanged({ ...scoringOptions, [key]: value })
 
-  const diminishingReturns = scoringOptions.diminishingReturns
-
   return (
     <div>
       <h2>Stat Weights</h2>
@@ -38,11 +36,11 @@ export default function Weights({ scoringOptions, scoringOptionsChanged }: Weigh
         />
       </details>
       <div>
-        <label htmlFor='drSlider'>Diminishing Returns: {diminishingReturns}%</label>
+        <label htmlFor='drSlider'>Diminishing Returns: {scoringOptions.diminishingReturns}%</label>
         <Slider
           name='drSlider'
-          currentValue={diminishingReturns}
-          valueChanged={(value) => updateScoringOptions('diminishingReturns', value)}
+          currentValue={scoringOptions.diminishingReturns * 5}
+          valueChanged={(value) => updateScoringOptions('diminishingReturns', value / 5)}
           maxValue={10}
         />
       </div>

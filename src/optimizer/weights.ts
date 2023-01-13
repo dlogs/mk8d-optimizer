@@ -38,5 +38,5 @@ export const defaultScoringOptions: ScoringOptions = {
   weights: defaultWeights,
   speedWeights: defaultSpeedTerrainWeights,
   handlingWeights: defaultHandlingTerrainWeights,
-  diminishingReturns: 1
+  diminishingReturns: 0.2
 }
