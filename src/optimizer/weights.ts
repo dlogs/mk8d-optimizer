@@ -1,4 +1,4 @@
-import { Stat, TerrainStat } from "./stats.js"
+import { Stat, TerrainStat } from './stats.js'
 
 export type Weights = Record<Stat, number>
 export type TerrainWeights = Record<TerrainStat, number>
@@ -10,19 +10,33 @@ export const defaultWeights: Weights = {
   Handling: 2,
   Traction: 0,
   MiniTurbo: 4,
-  Invincibility: 0
+  Invincibility: 0,
 }
 
 export const defaultSpeedTerrainWeights: TerrainWeights = {
   Ground: 10,
   Water: 10,
   Air: 5,
-  AntiGravity: 10
+  AntiGravity: 10,
 }
 
 export const defaultHandlingTerrainWeights: TerrainWeights = {
   Ground: 10,
   Water: 5,
   Air: 5,
-  AntiGravity: 10
+  AntiGravity: 10,
+}
+
+export interface ScoringOptions {
+  weights: Weights
+  speedWeights: TerrainWeights
+  handlingWeights: TerrainWeights
+  diminishingReturns: number
+}
+
+export const defaultScoringOptions: ScoringOptions = {
+  weights: defaultWeights,
+  speedWeights: defaultSpeedTerrainWeights,
+  handlingWeights: defaultHandlingTerrainWeights,
+  diminishingReturns: 1
 }
