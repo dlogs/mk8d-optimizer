@@ -23,7 +23,7 @@ class TopScoreFinder {
   private weights: Weights
   private speedWeights: TerrainWeights
   private handlingWeights: TerrainWeights
-  private applyDiminishingReturns: (value: number) =>  number
+  private applyDiminishingReturns: (value: number) => number
 
   constructor(private rows: RawRow[], options: ScoringOptions) {
     this.weights = options.weights
@@ -34,8 +34,7 @@ class TopScoreFinder {
   }
 
   findTopScoring(): FinalRow[] {
-    const addScoresToRow = (row: RawRow) =>
-      this.addTotalScore(this.addStatScores(this.addTerrainAverages(row)))
+    const addScoresToRow = (row: RawRow) => this.addTotalScore(this.addStatScores(this.addTerrainAverages(row)))
     const rowsWithScores = this.rows.map(addScoresToRow)
 
     return sort(rowsWithScores).desc((x) => x.TotalScore)
@@ -70,9 +69,7 @@ class TopScoreFinder {
 
   private averageTerrains(row: RawRow, suffix: string, terrainWeights: TerrainWeights): number {
     const total = sum(
-      AllTerrainStats.map(
-        (terrainStat) => terrainWeights[terrainStat] * row[(terrainStat + suffix) as RawStat],
-      ),
+      AllTerrainStats.map((terrainStat) => terrainWeights[terrainStat] * row[(terrainStat + suffix) as RawStat]),
     )
     const weightTotal = sum(Object.values(terrainWeights))
     return total / weightTotal
@@ -84,7 +81,7 @@ class TopScoreFinder {
     } else {
       const drRemaining = (100 - diminishingReturns) / 100
       const drDenominator = Math.log(drRemaining)
-      return (value => (Math.pow(drRemaining, value) - 1) / drDenominator)
+      return (value) => (Math.pow(drRemaining, value) - 1) / drDenominator
     }
   }
 }

@@ -9,8 +9,7 @@ export async function parseCsv(csv: string): Promise<RawRow[]> {
       csv,
       {
         columns: true,
-        cast: (value, context) =>
-          context.header || context.column == 'Name' ? value : Number.parseFloat(value),
+        cast: (value, context) => (context.header || context.column == 'Name' ? value : Number.parseFloat(value)),
       },
       (err, records: any[]) => {
         if (err) {
