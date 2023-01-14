@@ -10,7 +10,7 @@ export const defaultWeights: Weights = {
   Handling: 5,
   Traction: 1,
   MiniTurbo: 5,
-  Invincibility: 1,
+  Invincibility: 0,
 }
 
 export const defaultSpeedTerrainWeights: TerrainWeights = {
@@ -38,5 +38,5 @@ export const defaultScoringOptions: ScoringOptions = {
   weights: defaultWeights,
   speedWeights: defaultSpeedTerrainWeights,
   handlingWeights: defaultHandlingTerrainWeights,
-  diminishingReturns: 0.2
+  diminishingReturns: 0.2,
 }

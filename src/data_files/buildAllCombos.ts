@@ -16,7 +16,7 @@ async function buildAllCombos(dir: string) {
       async (fileName) =>
         ({
           name: fileName,
-          rows: await parseCsv(fs.readFileSync(`${dir}\\${fileName}.csv`).toString()),
+          rows: await parseCsv(fs.readFileSync(`${dir}/${fileName}.csv`).toString()),
         } as CsvFile),
     ),
   )
@@ -30,7 +30,7 @@ async function buildAllCombos(dir: string) {
   )
 
   const outputCsvContent = stringify(allRows, { header: true })
-  fs.writeFileSync(`${dir}\\combo.csv`, outputCsvContent)
+  fs.writeFileSync(`${dir}/combo.csv`, outputCsvContent)
 }
 
 function combineRowWithFile(leftRow: RawRow, rightFile: CsvFile): RawRow[] {
@@ -40,10 +40,8 @@ function combineRowWithFile(leftRow: RawRow, rightFile: CsvFile): RawRow[] {
 function combineRows(leftRow: RawRow, rightName: string, rightRow: RawRow): RawRow {
   return {
     Name: JSON.stringify({ ...JSON.parse(leftRow.Name), [rightName]: rightRow.Name }),
-    ...fromEntries(
-      AllRawStats.map((statName) => [statName, leftRow[statName] + rightRow[statName]]),
-    ),
+    ...fromEntries(AllRawStats.map((statName) => [statName, leftRow[statName] + rightRow[statName]])),
   }
 }
 
-buildAllCombos('public\\data_files\\raw')
+buildAllCombos('src/data_files/raw')

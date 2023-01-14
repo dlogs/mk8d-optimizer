@@ -3,7 +3,7 @@ import { FinalRow, findTopScoring } from '../optimizer/csvOptimizer.js'
 import { defaultScoringOptions } from '../optimizer/weights.js'
 import Output from '../organisms/Output.js'
 import Weights from '../organisms/Weights.js'
-import comboCsvUrl from '../data_files/in_game/combo.csv?url'
+import comboCsvUrl from '../data_files/in_game/combo_optimal.csv?url'
 import { parseCsv, RawRow } from '../data_files/csvParser.js'
 import useDebounce from '../util/useDebounce.js'
 
@@ -11,7 +11,7 @@ export default function Optimizer() {
   const [scoringOptions, setScoringOptions] = useState(defaultScoringOptions)
   const [csvRows, setCsvRows] = useState([] as RawRow[])
   const [resultRows, setResultRows] = useState([] as FinalRow[])
-  const debouncedScoringOptions = useDebounce(scoringOptions, 2000)
+  const debouncedScoringOptions = useDebounce(scoringOptions, 500)
 
   useEffect(() => {
     ;(async () => {

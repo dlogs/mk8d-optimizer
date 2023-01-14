@@ -1,0 +1,5 @@
+Name,GroundSpeed,WaterSpeed,AirSpeed,AntiGravitySpeed,Acceleration,Weight,GroundHandling,WaterHandling,AirHandling,AntiGravityHandling,Traction,MiniTurbo,Invincibility
+Super Glider,1,1,2,0,1,1,1,0,1,1,1,1,1
+Cloud Glider,0,1,1,1,2,0,1,0,2,1,1,2,0
+Wario Wing,1,0,2,1,1,2,1,1,1,0,0,1,1
+Peach Parasol,0,0,1,1,2,1,1,1,2,0,0,2,0
