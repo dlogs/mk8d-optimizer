@@ -2,14 +2,13 @@ import React from 'react'
 import Slider from '../atoms/Slider.js'
 import WeightsSliders from '../molecules/WeightsSliders.js'
 import { ScoringOptions } from '../optimizer/weights.js'
-import './Weights.css'
 
-export interface WeightsProps {
+export interface ScoringOptionsSlidersProps {
   scoringOptions: ScoringOptions
   scoringOptionsChanged: (value: ScoringOptions) => void
 }
 
-export default function Weights({ scoringOptions, scoringOptionsChanged }: WeightsProps) {
+export default function ScoringOptionsSliders({ scoringOptions, scoringOptionsChanged }: ScoringOptionsSlidersProps) {
   const updateScoringOptions = <TKey extends keyof ScoringOptions>(key: TKey, value: ScoringOptions[TKey]) =>
     scoringOptionsChanged({ ...scoringOptions, [key]: value })
 

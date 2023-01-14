@@ -6,12 +6,31 @@ import { AllStatScores, StatScore, TotalScore } from './scores.js'
 import { AllStats, AllTerrainStats, RawStat, Stat } from './stats.js'
 import { ScoringOptions, TerrainWeights, Weights } from './weights.js'
 
-//const { sort } = fast_sort
-
 export type StatRow = Record<Stat, number>
 export type ScoreRow = Record<StatScore, number>
 export type TotalScoreRow = Record<TotalScore, number>
 export type FinalRow = RawRow & StatRow & ScoreRow & TotalScoreRow
+
+export type FinalColumn = keyof FinalRow
+
+export const finalColumns: FinalColumn[] = [
+  'Name',
+  'Speed',
+  'Acceleration',
+  'Weight',
+  'Handling',
+  'Traction',
+  'MiniTurbo',
+  'Invincibility',
+  'TotalScore',
+]
+
+export interface Names {
+  character: string
+  body: string
+  tire: string
+  glider: string
+}
 
 export function findTopScoring(rows: RawRow[], options: ScoringOptions, count: number): FinalRow[] {
   const topScoreFinder = new TopScoreFinder(rows, options)
